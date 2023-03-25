@@ -1,0 +1,41 @@
+[user]
+    name = Antonio PG
+    email = aparodyg@gmail.com
+
+[color]
+    ui = true
+    branch = auto
+    diff = auto
+    status = auto
+    showbranch = auto
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+[color "diff"]
+    meta = yellow
+    frag = white
+    old = red
+    new = green
+
+[color "branch"]
+    current = yellow
+    local = cyan
+    remote = white
+
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+
+[log]
+    date = short
+
+[alias]
+	last = log -1 HEAD
+	one = log --oneline
+	graph = log --oneline --graph --decorate=short --branches='*'
+	mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
