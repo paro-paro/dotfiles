@@ -1,5 +1,5 @@
 export LANG=en_US.UTF-8
-export APPS="$HOME/apps"
+export APPS="/Applications"
 export CLICOLOR=1
 export LSCOLORS=fxexcxdxbxegedabagacad
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -9,7 +9,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="$HOME/.local/run"
 export XDG_BIN_HOME="$HOME/.local/bin" # not in the specs
 
-for file in "$XDG_CONFIG_HOME/env/apps/"*
+for file in "$XDG_CONFIG_HOME/envs/apps/"*
 do
     source "$file"
 done

@@ -1,5 +1,5 @@
 #!/bin/zsh
-source $(echo $PWD)/env/env.setup
+source $(echo $PWD)/envs/env.setup
 set_symlink () {
     src=$1
     dst=$2
@@ -21,7 +21,7 @@ printf "\n"
 
 j=0
 print "Creating cache directories..." >&2
-cache_dirs=(zsh brew brew/cache brew/logs vim node)
+cache_dirs=(zsh brew brew/cache brew/logs vim node pnpm npm python)
 for dir in $cache_dirs
 do
     [[ -d "$XDG_CACHE_HOME/$dir" ]] && continue
@@ -32,8 +32,8 @@ done
 [[ "$j" == 0 ]] && print "Cache directories already created." >&2
 printf "\n"
 
-[[ -d "$APPS/Visual Studio Code.app" ]] && VSCODE_BIN_PATH="$APPS/Visual Studio Code.app/Contents/Resources/app/bin/code"
 set_symlink "$XDG_CONFIG_HOME/zsh/.zshenv" "$HOME/.zshenv"
+[[ -d "$APPS/Visual Studio Code.app" ]] && VSCODE_BIN_PATH="$APPS/Visual Studio Code.app/Contents/Resources/app/bin/code"
 [[ -n $VSCODE_BIN_PATH ]] && set_symlink "$VSCODE_BIN_PATH" "$XDG_BIN_HOME/code"
 
 touch "$HOME/.hushlogin"

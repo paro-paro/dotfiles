@@ -1,5 +1,5 @@
 #!/bin/zsh
-source $HOME/.config/env/env.system
+source $HOME/.config/envs/env
 source $ZDOTDIR/extras/aliases.zsh
 
 # set PATH - from /etc/zprofile
@@ -9,4 +9,3 @@ fi
 
 export PATH="$XDG_BIN_HOME:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

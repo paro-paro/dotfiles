@@ -1,0 +1,5 @@
+# keep store-dir set to default (due to disk partition)
+global-bin-dir=${XDG_BIN_HOME}
+global-dir=${XDG_DATA_HOME}/pnpm/global
+cache-dir=${XDG_CACHE_HOME}/pnpm
+state-dir=${XDG_STATE_HOME}/pnpm
