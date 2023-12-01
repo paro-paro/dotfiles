@@ -7,7 +7,7 @@ INSTALL_DIR="/opt/homebrew"
 if [ ! -d "$INSTALL_DIR" ]
 then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.config/zsh/.zprofile"
+    # echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.config/zsh/.zprofile"
 else
     printf "${GREEN}brew${NC} already installed. \n"
 fi
