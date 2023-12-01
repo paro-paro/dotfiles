@@ -28,7 +28,6 @@ fi
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 autoload -Uz vcs_info
 
-# styles
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats '%r [%F{yellow}%b%f | %F{yellow}%u%f %F{green}%c%f %F{red}%m%f]'
 zstyle ':vcs_info:*' check-for-changes true
@@ -51,5 +50,6 @@ setopt PROMPT_SUBST
 PROMPT='%F{yellow}%T%f %1~ → '
 RPROMPT='${vcs_info_msg_0_} %#'
 
-# handle PATH
+# utils
+source $ZDOTDIR/utils/alias.sh
 source $ZDOTDIR/utils/path.sh
