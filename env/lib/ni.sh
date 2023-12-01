@@ -1,0 +1,1 @@
+export NI_CONFIG_FILE="$XDG_CONFIG_HOME/ni/nirc"
