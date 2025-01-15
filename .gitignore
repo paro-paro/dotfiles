@@ -1,0 +1,10 @@
+# Ignore everything by default
+*
+*/
+.DS_Store
+
+# Allow these files/directories
+!public/
+!public/**
+!.gitignore
+!README.md

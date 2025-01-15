@@ -1,0 +1,10 @@
+Wiki
+# https://zsh.sourceforge.io/Doc/Release/
+# https://zsh.sourceforge.io/Intro/intro_3.html
+# https://zsh.sourceforge.net/Doc/Release/User-Contributions.html#Version-Control-Information
+# https://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Prompt-Expansion
+# https://github.com/zsh-users/zsh/blob/master/Misc/vcs_info-examples
+# https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+# https://github.com/homebrew/install#uninstall-homebrew
+# https://www.youtube.com/watch?v=BHxaUP0kz9w
