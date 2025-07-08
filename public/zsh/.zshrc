@@ -1,29 +1,6 @@
 #!/bin/zsh
 unsetopt BEEP
 
-# key bindings (emacs keymap)
-# run: zle -al to lists all registered zle commands
-setopt EMACS
-if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
-    bindkey "^[[D" backward-char        # left
-    bindkey "^[[C" forward-char         # right
-    bindkey "^[^[[D" backward-word      # alt + left
-    bindkey "^[^[[C" forward-word       # alt + right
-    bindkey "^[[1;5D" beginning-of-line # ctrl + left
-    bindkey "^[[1;5C" end-of-line       # ctrl + right
-    bindkey "^[[3~" delete-char         # fn + delete (forward delete)
-fi
-
-if [ "$TERM_PROGRAM" = "ghostty" ]; then
-    bindkey "^[[D" backward-char        # left
-    bindkey "^[[C" forward-char         # right
-    bindkey "^[b" backward-word         # alt + left
-    bindkey "^[f" forward-word          # alt + right
-    bindkey "^[[1;5D" beginning-of-line # ctrl + left
-    bindkey "^[[1;5C" end-of-line       # ctrl + right
-    bindkey "^[[3~" delete-char         # fn + delete (forward delete)
-fi
-
 if [ "$TERM_PROGRAM" = "vscode" ]; then
     bindkey "^[[D" backward-char        # left
     bindkey "^[[C" forward-char         # right
@@ -57,8 +34,8 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 # set up prompt with vcs_info
 precmd () { vcs_info }
 setopt PROMPT_SUBST
-PROMPT='%F{yellow}%T%f %1~ → '
-RPROMPT='${vcs_info_msg_0_} %#'
+PROMPT='%F{yellow}%T%f %1~ %# '
+RPROMPT='${vcs_info_msg_0_}'
 
 # utils
 source $ZDOTDIR/utils/alias.sh
