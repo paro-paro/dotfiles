@@ -10,6 +10,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="$HOME/.local/run"
 export XDG_BIN_HOME="$HOME/.local/bin" # not in spec
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 for file in "$HOME/.config/public/zsh/env/libs/"*
 do

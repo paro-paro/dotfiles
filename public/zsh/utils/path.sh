@@ -7,16 +7,16 @@ case ":$PATH:" in
     *) export PATH="$N_PREFIX/bin:$PATH" ;;
 esac
 
-# deno
-case ":$PATH:" in
-    *":$DENO_INSTALL:"*) ;;
-    *) export PATH="$DENO_INSTALL/bin:$PATH" ;;
-esac
-
 # bun
 case ":$PATH:" in
     *":$BUN_INSTALL:"*) ;;
     *) export PATH="$BUN_INSTALL/bin:$PATH" ;;
+esac
+
+# deno
+case ":$PATH:" in
+    *":$DENO_INSTALL:"*) ;;
+    *) export PATH="$DENO_INSTALL/bin:$PATH" ;;
 esac
 
 # cargo
