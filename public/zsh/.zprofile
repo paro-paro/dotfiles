@@ -1,12 +1,7 @@
 #!/bin/zsh
-source "$HOME/.config/public/zsh/env/set.sh"
+# sourced on login shells only
 
-# create macOS PATH => check /etc/zprofile
+# from /etc/zprofile => updates PATH removing duplicates and non-existent Apple system bin paths
 if [ -x /usr/libexec/path_helper ]; then
-    eval `/usr/libexec/path_helper -s`
-fi
-
-# homebrew
-if [ -x /opt/homebrew/bin/brew ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+	eval `/usr/libexec/path_helper -s`
 fi

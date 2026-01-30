@@ -1,10 +1,9 @@
-export LANG=en_US.UTF-8
 export CLICOLOR=1
-export LSCOLORS=fxexcxdxbxegedabagacad
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LANG=en_US.UTF-8
 
 export APPS="/Applications"
-export DEV_PREFIX="/Users/antonio/Dev"
-
+export DEV_PREFIX="/Volumes/dev"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -18,9 +17,9 @@ do
 done
 unset file
 
-if [ -d "$APPS/Cursor.app" ]
+if [ -d "$APPS/Zed.app" ]
 then
-    export EDITOR="cursor --wait"
+    export EDITOR="zed --wait"
 else
     export EDITOR="vim"
 fi

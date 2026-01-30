@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # custom bin dir
 export PATH="$XDG_BIN_HOME:$PATH"
 
@@ -26,9 +24,3 @@ case ":$PATH:" in
     *":$CARGO_HOME:"*) ;;
     *) export PATH="$CARGO_HOME/bin:$PATH" ;;
 esac
-
-# bun autocomplete
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-
-# remove possible duplicates in PATH
-typeset -gU cdpath fpath mailpath path

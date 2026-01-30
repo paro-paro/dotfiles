@@ -1,7 +1,9 @@
 #!/bin/zsh
+# sourced on interactive shells (prompt)
 unsetopt BEEP
+source $ZDOTDIR/utils/alias.sh
 
-if [ "$TERM_PROGRAM" = "vscode" ]; then
+if [ "$TERM_PROGRAM" = "zed" ]; then
     bindkey "^[[D" backward-char        # left
     bindkey "^[[C" forward-char         # right
     bindkey "^[b" backward-word         # alt + left
@@ -37,6 +39,4 @@ setopt PROMPT_SUBST
 PROMPT='%F{yellow}%T%f %1~ %# '
 RPROMPT='${vcs_info_msg_0_}'
 
-# utils
-source $ZDOTDIR/utils/alias.sh
-source $ZDOTDIR/utils/path.sh
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
