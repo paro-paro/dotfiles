@@ -14,7 +14,6 @@ set_symlink () {
 set_symlink "$XDG_CONFIG_HOME/public/zsh/.zshenv" "$HOME/.zshenv"
 [[ -d "$HOME/.zsh_sessions" ]] && rm -rf "$HOME/.zsh_sessions"
 [[ -a "$HOME/.zsh_history" ]] && rm "$HOME/.zsh_history"
-[[ ! -f "$HOME/.hushlogin" ]] && touch "$HOME/.hushlogin"
 
 # handle xdg
 i=0
@@ -41,7 +40,7 @@ do
     ((j++))
 done
 [[ "$j" == 0 ]] && print "Cache directories already created." >&2
-printf "\n" 
+printf "\n"
 
 # add code and cursor cli's
 if [[ -d "$APPS/Visual Studio Code.app" ]]; then
