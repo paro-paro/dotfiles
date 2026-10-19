@@ -1,1 +1,0 @@
-export N_PREFIX="$XDG_DATA_HOME/n"

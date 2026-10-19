@@ -2,6 +2,7 @@
 APPS="/Applications"
 XDG_CONFIG_HOME="$HOME/.config"
 XDG_CACHE_HOME="$HOME/.cache"
+XDG_STATE_HOME="$HOME/.local/state"
 XDG_BIN_HOME="$HOME/.local/bin"
 
 set_symlink () {
@@ -31,7 +32,7 @@ printf "\n"
 
 j=0
 print "Creating cache directories..." >&2
-cache_dirs=(zsh brew brew/cache brew/logs vim python npm node bun)
+cache_dirs=(zsh brew brew/cache brew/logs)
 for dir in $cache_dirs
 do
     [[ -d "$XDG_CACHE_HOME/$dir" ]] && continue
@@ -42,16 +43,17 @@ done
 [[ "$j" == 0 ]] && print "Cache directories already created." >&2
 printf "\n"
 
-# add code and cursor cli's
-if [[ -d "$APPS/Visual Studio Code.app" ]]; then
-    VSCODE_BIN_PATH="$APPS/Visual Studio Code.app/Contents/Resources/app/bin/code"
-fi
-
-if [[ -d "$APPS/Cursor.app" ]]; then
-    CURSOR_BIN_PATH="$APPS/Cursor.app/Contents/Resources/app/bin/cursor"
-fi
-
-[[ -n $VSCODE_BIN_PATH ]] && [[ -f $VSCODE_BIN_PATH ]] && set_symlink "$VSCODE_BIN_PATH" "$XDG_BIN_HOME/code"
-[[ -n $CURSOR_BIN_PATH ]] && [[ -f $CURSOR_BIN_PATH ]] && set_symlink "$CURSOR_BIN_PATH" "$XDG_BIN_HOME/cursor"
+k=0
+print "Creating state directories..." >&2
+state_dirs=(zsh vim python node)
+for dir in $state_dirs
+do
+    [[ -d "$XDG_STATE_HOME/$dir" ]] && continue
+    mkdir -p "$XDG_STATE_HOME/$dir"
+    print "$XDG_STATE_HOME/$dir" >&2
+    ((k++))
+done
+[[ "$k" == 0 ]] && print "State directories already created." >&2
+printf "\n"
 
 echo "Success: Basic setup done."

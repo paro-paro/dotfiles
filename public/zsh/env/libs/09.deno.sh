@@ -1,1 +1,0 @@
-export DENO_INSTALL="$XDG_DATA_HOME/deno"

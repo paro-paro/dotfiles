@@ -1,6 +1,8 @@
 #!/bin/zsh
 # sourced on interactive shells (prompt)
+
 unsetopt BEEP
+setopt SHARE_HISTORY HIST_IGNORE_ALL_DUPS # write history immediately, shared across tabs, no duplicates
 source $ZDOTDIR/utils/alias.sh
 
 if [ "$TERM_PROGRAM" = "zed" ]; then
@@ -18,25 +20,32 @@ autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%r [%F{yellow}%b%f | %F{yellow}%u%f %F{green}%c%f %F{red}%m%f]'
+zstyle ':vcs_info:*' formats '%F{yellow}%u%f %F{green}%c%f %F{red}%m%f'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' check-for-staged-changes true
 zstyle ':vcs_info:*' unstagedstr '+'
 zstyle ':vcs_info:*' stagedstr '*'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
+# hooks only run inside a repo; ls-files skips the tracked-file diff vcs_info already did
 +vi-git-untracked() {
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep -m 1 '^??' &>/dev/null
+    if [[ -n $(git -C "${hook_com[base]}" ls-files --others --exclude-standard --directory --no-empty-directory 2>/dev/null | head -n 1) ]]
     then
         hook_com[misc]='!'
     fi
 }
 
 # set up prompt with vcs_info
-precmd () { vcs_info }
-setopt PROMPT_SUBST
-PROMPT='%F{yellow}%T%f %1~ %# '
-RPROMPT='${vcs_info_msg_0_}'
+precmd () {
+    vcs_info
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [[ -n $branch ]]; then
+        _git_prompt="[%F{yellow}${branch}%f] "
+    else
+        _git_prompt=""
+    fi
+}
 
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+setopt PROMPT_SUBST
+PROMPT='%F{yellow}%T%f %1~ ${_git_prompt}%# '
+RPROMPT='${vcs_info_msg_0_}'
